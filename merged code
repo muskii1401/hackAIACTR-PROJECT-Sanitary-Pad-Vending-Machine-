@@ -2,12 +2,12 @@
 #include <Servo.h>             //Servo library
 
 
-LiquidCrystal lcd(30, 32, 34, 31, 33, 35, 37);
-const byte interruptPin1 = 21;
-const byte interruptPin2 = 18;
-const byte interruptPin3 = 19;
-const byte interruptPin4 = 20;
-const byte interruptPin5 = 3;
+LiquidCrystal lcd(12,11,5,4,3,2);
+const byte interruptPin1 = 13;
+const byte interruptPin2 = 10;
+const byte interruptPin3 = 8;
+const byte interruptPin4 = 7;
+const byte interruptPin5 = 6;
 volatile int value7 = 5;
 volatile int value2 = 0;
 volatile int value5 = 0;
