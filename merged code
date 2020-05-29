@@ -1,0 +1,106 @@
+#include <LiquidCrystal.h>
+#include <Servo.h>             //Servo library
+
+
+LiquidCrystal lcd(12,11,5,4,3,2);
+const byte interruptPin1 = 14;
+const byte interruptPin2 = 10;
+const byte interruptPin3 = 8;
+const byte interruptPin4 = 7;
+const byte interruptPin5 = 6;
+volatile int value2 = 5;
+volatile int value5 = 0;
+volatile int valueswitch = 0;
+
+volatile int countFive = 0;
+Servo servo_test;        //initialize a servo object for the connected servo  
+                
+int angle = 0;    
+
+void setup() {
+  pinMode(interruptPin1, INPUT_PULLUP);
+  pinMode(interruptPin2, INPUT_PULLUP);
+  pinMode(interruptPin3, INPUT_PULLUP);
+  pinMode(interruptPin4, INPUT_PULLUP);
+  pinMode(interruptPin5, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(interruptPin2), coinFive , RISING);
+  attachInterrupt(digitalPinToInterrupt(interruptPin4), show_1_5, RISING);
+   servo_test.attach(9);      // attach the signal pin of servo to pin9 of arduino
+  
+  lcd.begin(16, 2);
+  
+  lcd.print("COIN DETECTOR &");
+  lcd.setCursor(1, 1);
+  lcd.print("AMOUNT COUNT");
+  delay(1200);
+  delay(1200);
+  delay(1200);
+  
+  lcd.begin(16, 2);
+  lcd.print("INSERT THE COIN");
+
+
+  Serial.begin(9600);
+  Serial.println(" ");
+  Serial.print(" AMOUNT COUNTER ");
+}
+
+void loop() {
+
+
+  delay(2000);
+  lcd.begin(16, 2);
+  lcd.print("INSERT THE COIN");
+
+
+}
+
+/*
+
+  INTERRUPT SERVICE ROUTINE
+
+*/
+
+
+void coinFive() {
+  countFive++;
+  value5 = (countFive * 5);
+  Serial.println("\n");
+  Serial.println(" 5Rs coin = \r ");
+  Serial.print(value5);
+  Serial.print("Rs");
+
+}
+
+
+void show_1_5()
+{
+  
+  Serial.println("\n");
+  Serial.println("Number of 5Rs coins =  \r ");
+  Serial.print(countFive);
+  Serial.println("\n");
+  Serial.println("TOTAL Rs COINS =  \r ");
+  Serial.print(value5);
+  Serial.print("Rs");
+  
+  //coin of one Rs
+  
+  // coin of five Rs
+  lcd.setCursor(0, 1);
+  lcd.print("5Rs coin =");
+  lcd.setCursor(11, 1);
+  lcd.print(value5);
+  if (value5==value2)
+  {
+    for(angle = 0; angle < 180; angle += 1)    // command to move from 0 degrees to 180 degrees 
+  {                                  
+    servo_test.write(angle);                 //command to rotate the servo to the specified angle
+    delay(15);                       
+  } 
+ 
+  delay(1000);
+  }
+ 
+
+}
