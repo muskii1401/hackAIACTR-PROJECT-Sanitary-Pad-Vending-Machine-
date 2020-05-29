@@ -2,29 +2,140 @@
 #include <Servo.h>             //Servo library
 
 
-LiquidCrystal lcd(12,11,5,4,3,2);
-const byte interruptPin1 = 14;
-const byte interruptPin2 = 10;
-const byte interruptPin3 = 8;
-const byte interruptPin4 = 7;
-const byte interruptPin5 = 6;
-volatile int value2 = 5;
+LiquidCrystal lcd(30, 32, 34, 31, 33, 35, 37);
+const byte interruptPin1 = 21;
+const byte interruptPin2 = 18;
+const byte interruptPin3 = 19;
+const byte interruptPin4 = 20;
+const byte interruptPin5 = 3;
+volatile int value7 = 5;
+volatile int value2 = 0;
 volatile int value5 = 0;
+volatile int value1 = 0;
 volatile int valueswitch = 0;
-
+volatile int countOne = 0 ;
 volatile int countFive = 0;
+volatile int countTwo = 0;
+volatile int TOTAL=0;
 Servo servo_test;        //initialize a servo object for the connected servo  
                 
 int angle = 0;    
 
-void setup() {
+
+void coinTwo() 
+{  countTwo++;
+  value2 = (countTwo * 2);
+  Serial.println("\n");
+  Serial.println(" 2Rs coin = \r ");
+  Serial.print(value2);
+  Serial.print("Rs");
+  Serial.println("\n");
+}
+
+void coinFive()
+
+{  countFive++;
+  value5 = (countFive * 5);
+  Serial.println("\n");
+  Serial.println(" 5Rs coin = \r ");
+  Serial.print(value5);
+  Serial.print("Rs");
+}
+  
+  
+ void coinOne() 
+ { countOne++;
+  value1 = (countOne);
+  Serial.println("\n");
+  Serial.println(" 1Rs coin = \r ");
+  Serial.print(value1);
+  Serial.print("Rs");
+
+ }
+
+
+void show_1_5()
+
+  {
+  Serial.println("\n");
+  Serial.println("Number of 1Rs coins =  \r ");
+  Serial.print(countOne);
+  Serial.println("\n");
+  Serial.println("TOTAL 1Rs COINS =  \r ");
+  Serial.print(value1);
+  Serial.print("Rs");
+
+   Serial.println("Number of 2Rs coins =  \r ");
+  Serial.print(countTwo);
+  Serial.println("\n");
+  Serial.println("TOTAL 2Rs COINS =  \r ");
+  Serial.print(value2);
+  Serial.print("Rs");
+  
+  //coin of one Rs
+  lcd.begin(16, 2);
+  lcd.print("1Rs coin= ");
+  lcd.setCursor(11, 0);
+  lcd.print(value1);
+   
+   //coin of 2 Rs
+   lcd.begin(16, 2);
+  lcd.print("1Rs coin= ");
+  lcd.setCursor(11, 0);
+  lcd.print(value2);
+
+  //TOTAL AMOUNT
+  TOTAL=(value1+value2);
+  lcd.setCursor(0, 1);
+  lcd.print("TOTAL =");
+  lcd.setCursor(11, 1);
+  lcd.print(TOTAL);
+   Serial.println("\n");
+  Serial.println("TOTAL AMOUNT =  \r ");
+  Serial.print(TOTAL);
+  Serial.print("Rs");
+  if(TOTAL==value7)
+  {
+    for(angle = 0; angle < 180; angle += 1)    // command to move from 0 degrees to 180 degrees 
+  {                                  
+    servo_test.write(angle);                 //command to rotate the servo to the specified angle
+    delay(15);                       
+  } 
+ 
+  delay(1000);
+  }
+  
+  // coin of five Rs
+  lcd.setCursor(0, 1);
+  lcd.print("5Rs coin =");
+  lcd.setCursor(11, 1);
+  lcd.print(value5);
+  if (value7==value2)
+  {
+    for(angle = 0; angle < 180; angle += 1)    // command to move from 0 degrees to 180 degrees 
+  {                                  
+    servo_test.write(angle);                 //command to rotate the servo to the specified angle
+    delay(15);                       
+  } 
+ 
+  delay(1000);
+  }
+ 
+  }
+
+
+void setup() 
+{
   pinMode(interruptPin1, INPUT_PULLUP);
   pinMode(interruptPin2, INPUT_PULLUP);
   pinMode(interruptPin3, INPUT_PULLUP);
   pinMode(interruptPin4, INPUT_PULLUP);
   pinMode(interruptPin5, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(interruptPin1), coinOne , RISING);
   attachInterrupt(digitalPinToInterrupt(interruptPin2), coinFive , RISING);
+  attachInterrupt(digitalPinToInterrupt(interruptPin3), coinTwo , RISING);
   attachInterrupt(digitalPinToInterrupt(interruptPin4), show_1_5, RISING);
+  
    servo_test.attach(9);      // attach the signal pin of servo to pin9 of arduino
   
   lcd.begin(16, 2);
@@ -45,62 +156,9 @@ void setup() {
   Serial.print(" AMOUNT COUNTER ");
 }
 
-void loop() {
-
-
+void loop()
+{
   delay(2000);
   lcd.begin(16, 2);
   lcd.print("INSERT THE COIN");
-
-
-}
-
-/*
-
-  INTERRUPT SERVICE ROUTINE
-
-*/
-
-
-void coinFive() {
-  countFive++;
-  value5 = (countFive * 5);
-  Serial.println("\n");
-  Serial.println(" 5Rs coin = \r ");
-  Serial.print(value5);
-  Serial.print("Rs");
-
-}
-
-
-void show_1_5()
-{
-  
-  Serial.println("\n");
-  Serial.println("Number of 5Rs coins =  \r ");
-  Serial.print(countFive);
-  Serial.println("\n");
-  Serial.println("TOTAL Rs COINS =  \r ");
-  Serial.print(value5);
-  Serial.print("Rs");
-  
-  //coin of one Rs
-  
-  // coin of five Rs
-  lcd.setCursor(0, 1);
-  lcd.print("5Rs coin =");
-  lcd.setCursor(11, 1);
-  lcd.print(value5);
-  if (value5==value2)
-  {
-    for(angle = 0; angle < 180; angle += 1)    // command to move from 0 degrees to 180 degrees 
-  {                                  
-    servo_test.write(angle);                 //command to rotate the servo to the specified angle
-    delay(15);                       
-  } 
- 
-  delay(1000);
-  }
- 
-
 }
