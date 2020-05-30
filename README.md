@@ -11,7 +11,10 @@ It will work similar to the way in what other machines work but just to minimise
 <br>5) Then to again ensure the cost cutting, we have used a servo motor which will rotate 180° and will give a sanitary napkin in return  as soon as the coin reaches the slot and LCD display counts it as  the amount of 5Rs. 
 
 <br> The code and internal functioning of this whole prototype was simulated using TINKERCAD simulator, an AUTODESK Product. Here are some of the images for reference !
+<p> INTERNAL FUNCTIONING </p>
 <img src="simulation part 4.png">
+<p> SIMULATION SETUP </p>
+<img src="simulation setup.png">
 
 
 
