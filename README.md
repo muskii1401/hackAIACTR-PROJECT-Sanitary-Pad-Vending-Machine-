@@ -1,6 +1,5 @@
-<h1> SANI-BUDDY </H1>
-The sanitary napkin vending machine is a personal hygienic product that turned out as an essential one because it makes young girls to be
-stress-free during menstruation, as they can pick the napkins independently and can be changed frequently based on their need.
+<h1> SANI-BUDDY(Sanitary Napkin Vanitary Machine)</H1>
+SANI-BUDDY (Sanitary Napkin Vanitary Machine) is an affordable approach from our side which will provide sanitary napkin to young girls so that they cab be stress-free during menstruation, as they can pick the napkins independently as an when required (based on their need).
 <h2> IDEA </h2>
 We are trying to make an affordable Sanitary Napkin Vending Machine, particularly for our college, which will operate using very basic hardware componentslike Arduino Uno along with the other components like Counter display, lcd, servo motor, connecting wires, switch. This machine will accept coins from users and will provide them with the napkins in return.
 <h3> PROBLEM and SOLUTION </h3>
