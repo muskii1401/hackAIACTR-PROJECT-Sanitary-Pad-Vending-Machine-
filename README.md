@@ -19,7 +19,7 @@ It will work similar to the way in what other machines work but just to minimise
 <p> <u> COMPONENTS LIST</u> </p>
 <img src="component list.png" height="75%" width="75%">
 <p> <u> FRONT VIEW </u> </p>
-<img src="front view.png" height="75%" width="75%">
+<img src="IMG_20200530_224645.jpg" height="75%" width="75%">
 
 
 
