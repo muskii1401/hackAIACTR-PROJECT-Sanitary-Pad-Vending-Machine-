@@ -13,11 +13,11 @@ It will work similar to the way in what other machines work but just to minimise
 
 <br> The code and internal functioning of this whole prototype was simulated using TINKERCAD simulator, an AUTODESK Product. Here are some of the images for reference !
 <p><u> INTERNAL FUNCTIONING</u> </p>
-<img src="simulation part 4.png">
+<img src="simulation part 4.png" height="75%" width="75%">
 <p> <u> SIMULATION SETUP </u> </p>
-<img src="simulation setup.png">
+<img src="simulation setup.png" height="75%" width="75%">
 <p> <u> COMPONENTS LIST</u> </p>
-<img src="component list.png">
+<img src="component list.png" height="75%" width="75%">
 
 
 
