@@ -10,7 +10,7 @@ It will work similar to the way in what other machines work but just to minimise
 <br>4) IRs will accept these three types of coins and with the help of switches  and LCD attached, it will make sure that the sum or total amount of all the coins remain 5Rs only, as all our users will get napkins for 5Rs. 
 <br>5) Then to again ensure the cost cutting, we have used a servo motor which will rotate 180° and will give a sanitary napkin in return  as soon as the coin reaches the slot and LCD display counts it as  the amount of 5Rs. 
 
-The code and internal functioning of this whole prototype was simulated using TINKERCAD simulator, an AUTODESK Product. Here are some of the images for reference !
+<br> The code and internal functioning of this whole prototype was simulated using TINKERCAD simulator, an AUTODESK Product. Here are some of the images for reference !
 
 
 
